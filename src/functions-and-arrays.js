@@ -177,8 +177,6 @@ function doesWordExist(arr, word) {
   let i=0;
   let exists = false;
   while (i<arr.length) {
-    console.log(arr[i]);
-    console.log(exists);
     if (arr[i] === word) {
       exists = true;
       break;
@@ -209,8 +207,32 @@ const wordsCount = [
   'matter'
 ];
 
-function howManyTimes() {}
-
+function howManyTimes(arr, word) {
+  let i=0;
+  let exists = false;
+  let indices = [];
+   
+  while (i<arr.length) {
+     let element = arr[i];
+    let idx = arr.indexOf(element);  
+    if (element === word) {
+       while (idx != -1) {
+      indices.push(idx);
+      console.log(indices);
+      idx = arr.indexOf(element, idx +1);
+       }
+      exists = true;
+      break;
+    }
+    i++;
+  }
+  if (exists === false) {
+    return 0;
+  } else {
+    return indices.length;
+  }
+ 
+}
 
 
 // Iteration #8: Bonus
