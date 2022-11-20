@@ -137,24 +137,60 @@ const wordsUnique = [
 ];
 
 function uniquifyArray(arr) {
-  let i = 0;
+   
+    let i=0;
     while (i<arr.length) {
-      if (arr.includes(arr[i],i+1)) {
-        
-        arr.splice(arr.indexOf(arr[i]),1);
-        
-      } 
+      let indices = [];
+      let element = arr[i];
+      let idx = arr.indexOf(element);
+     // console.log(element);
+      //console.log(idx);
+      while (idx != -1) {
+        indices.push(idx);
+        //console.log(indices);
+        idx = arr.indexOf(element, idx +1);
+        //console.log(idx);
+      }
+      let j=1;
+      while (j < indices.length) {
+        //console.log(indices);
+       arr.splice(indices[j],1);
+      // console.log(arr);
+        if (indices[j+1]) {
+        indices[j+1] = indices[j+1] - 1; 
+        }
+        j++;
+      }
       i++;
     }
+    //console.log(arr);
     return arr;
   }
+  
 
 
 
 // Iteration #6: Find elements
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
 
-function doesWordExist() {}
+function doesWordExist(arr, word) {
+  let i=0;
+  let exists = false;
+  while (i<arr.length) {
+    console.log(arr[i]);
+    console.log(exists);
+    if (arr[i] === word) {
+      exists = true;
+      break;
+    }
+    i++;
+  }
+  if (exists === false) {
+    return false;
+  } else {
+    return true;
+  }
+}
 
 
 
